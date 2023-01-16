@@ -1,0 +1,11 @@
+gui.FormKategori$1
+gui.FormKategori$2
+gui.FormKategori$5
+gui.FormKategori$6
+gui.FormKategori$3
+gui.FormKategori$4
+gui.FormKategori$10
+gui.FormKategori$9
+gui.FormKategori
+gui.FormKategori$7
+gui.FormKategori$8

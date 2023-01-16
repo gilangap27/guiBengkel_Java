@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d00a22e8-3359-4918-9bdc-d9c21880bc1e">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="merk" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select * from suku_cadang where merk_sukucadang = $P{merk}]]>
+	</queryString>
+	<field name="ID_SUKUCADANG" class="java.lang.String"/>
+	<field name="NAMA_SUKUCADANG" class="java.lang.String"/>
+	<field name="MERK_SUKUCADANG" class="java.lang.String"/>
+	<field name="HARGA_JUAL" class="java.math.BigDecimal"/>
+	<field name="STOK" class="java.math.BigDecimal"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="67" splitType="Stretch">
+			<staticText>
+				<reportElement x="134" y="11" width="292" height="42" uuid="062492c6-1dd3-4249-9bc2-b6b067c82f33"/>
+				<textElement textAlignment="Center">
+					<font size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[LAPORAN SPAREPART]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="59" width="555" height="1" uuid="42ea5b28-7b31-4872-b808-9dd1341351ba"/>
+			</line>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="23" splitType="Stretch">
+			<staticText>
+				<reportElement x="18" y="3" width="48" height="20" uuid="f02ef480-3500-4f39-9e87-5701c6c796ef"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MERK : ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="66" y="3" width="100" height="20" uuid="53fe6725-abba-4eab-81a6-14a84cdceba8"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{merk}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="41" splitType="Stretch">
+			<staticText>
+				<reportElement x="66" y="14" width="68" height="20" uuid="9ecd793a-68b6-4c1d-b17e-85b978676bc9"/>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="24" y="14" width="24" height="20" uuid="00d12a18-b35d-41f6-aa7c-b5a5897d4b1e"/>
+				<text><![CDATA[NO.]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="8" width="555" height="1" uuid="012ac1ad-e0d6-4151-bf47-f4a0b84ce003"/>
+			</line>
+			<line>
+				<reportElement x="0" y="33" width="555" height="1" uuid="0499979b-5291-44ab-ab05-67f2325027ed"/>
+			</line>
+			<staticText>
+				<reportElement x="146" y="14" width="100" height="20" uuid="06c8eeb2-12c5-499d-9140-1bcc4e100edb"/>
+				<text><![CDATA[NAMA SUKUCADANG]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="262" y="14" width="100" height="20" uuid="10395d84-0e37-40cd-98c4-f1305043d152"/>
+				<text><![CDATA[HARGA_JUAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="378" y="13" width="100" height="20" uuid="2b63e051-1beb-4fd1-af7d-c3c995b1b070"/>
+				<text><![CDATA[STOK]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="25" splitType="Stretch">
+			<textField>
+				<reportElement x="66" y="0" width="68" height="20" uuid="3071764e-597c-40a3-b5a4-808e3ddc4c60"/>
+				<textFieldExpression><![CDATA[$F{ID_SUKUCADANG}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="24" y="0" width="24" height="20" uuid="4cacb825-de05-4fd6-9372-641e3d5cdae1"/>
+				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="146" y="0" width="100" height="20" uuid="40b31dfa-f529-435f-a23b-a5d620eed231"/>
+				<textFieldExpression><![CDATA[$F{NAMA_SUKUCADANG}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="262" y="0" width="100" height="20" uuid="c24cf48f-e1e6-417e-955a-6194f09605c6"/>
+				<textFieldExpression><![CDATA[$F{HARGA_JUAL}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="378" y="0" width="100" height="20" uuid="70b3bcf2-f423-4951-9b5b-d01ae4ad8756"/>
+				<textFieldExpression><![CDATA[$F{STOK}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="31" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="4" width="555" height="1" uuid="8e3d2c42-d4b2-4ef2-9336-f59b85ad0a23"/>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

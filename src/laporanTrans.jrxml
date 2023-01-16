@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="370fb901-b62a-4410-b982-efa25afee6e6">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="BULAN" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select t.no_tagihan, t.total_hargaservice, t.tanggal_reparasi, TO_CHAR(t.tanggal_reparasi,'MONTH'), k.nama_kasir, t.nama_teknisi 
+from tagihan t, service s, kasir k, teknisi t
+where t.id_service = s.id_service and t.id_kasir = k.id_kasir and s.id_teknisi = t.id_teknisi
+and TO_CHAR(t.tanggal_reparasi,'MM') = $P{BULAN}]]>
+	</queryString>
+	<field name="NO_TAGIHAN" class="java.lang.String"/>
+	<field name="TOTAL_HARGASERVICE" class="java.math.BigDecimal"/>
+	<field name="TANGGAL_REPARASI" class="java.sql.Timestamp"/>
+	<field name="TO_CHAR(T.TANGGAL_REPARASI,&apos;MONTH&apos;)" class="java.lang.String"/>
+	<field name="NAMA_KASIR" class="java.lang.String"/>
+	<field name="NAMA_TEKNISI" class="java.lang.String"/>
+	<variable name="TOTAL_HARGASERVICE_1" class="java.lang.Integer" resetType="Column" calculation="Count">
+		<variableExpression><![CDATA[$F{TOTAL_HARGASERVICE}]]></variableExpression>
+	</variable>
+	<variable name="totalTransaksi" class="java.lang.String"/>
+	<variable name="TOTAL_HARGASERVICE_2" class="java.math.BigDecimal" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{TOTAL_HARGASERVICE}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="140" y="17" width="272" height="42" uuid="e2d0b624-7d57-47fa-a898-1c3bb57f9c75"/>
+				<textElement textAlignment="Center">
+					<font size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[LAPORAN TRANSAKSI]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="67" width="555" height="1" uuid="3e1a38f9-1add-4aee-a472-4bedc9304176"/>
+			</line>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="21" splitType="Stretch">
+			<staticText>
+				<reportElement x="18" y="0" width="58" height="20" uuid="fbee170f-954d-4fd8-9db8-ced56a9af92d"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[BULAN :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="76" y="0" width="100" height="20" uuid="b9b3379c-1a95-4576-ac26-7d85751dc181"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{TO_CHAR(T.TANGGAL_REPARASI,'MONTH')}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="45" splitType="Stretch">
+			<staticText>
+				<reportElement x="14" y="12" width="38" height="20" uuid="456fca2c-3a7c-45df-845a-7bb8ef991633"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[NO.]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="5" width="555" height="1" uuid="36eba547-1e2a-4d46-b4ce-c9ad5442d065"/>
+			</line>
+			<line>
+				<reportElement x="0" y="36" width="555" height="1" uuid="90c712fc-b443-4412-9c49-ba56ae937db4"/>
+			</line>
+			<staticText>
+				<reportElement x="56" y="12" width="100" height="20" uuid="0a4918ba-106d-4b1a-bda3-8fba8498d7fd"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[NO TAGIHAN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="156" y="12" width="86" height="20" uuid="84cbd425-34c8-47c2-b51a-f6a760380d51"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[NAMA KASIR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="342" y="12" width="74" height="20" uuid="2cb1ca4d-2b0c-4448-812d-15bbc052197d"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[TANGGAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="438" y="12" width="100" height="20" uuid="1b9ad6f3-5b53-4af3-bf3a-0a9bca31209d"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[TOTAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="242" y="12" width="100" height="20" uuid="74ec0925-e4ac-44e3-b6cd-cc9c48f5eea3"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[NAMA TEKNISI]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="23" splitType="Stretch">
+			<textField>
+				<reportElement x="13" y="3" width="38" height="20" uuid="f8d66ea1-984e-43d0-8fd7-e35210bacb14"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="56" y="3" width="100" height="20" uuid="3a3ce32e-bda1-4c7b-8628-bcf081d625df"/>
+				<textFieldExpression><![CDATA[$F{NO_TAGIHAN}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="156" y="3" width="86" height="20" uuid="99dc2b2b-4370-45ec-9d3a-1d78ebfdd420"/>
+				<textFieldExpression><![CDATA[$F{NAMA_KASIR}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="342" y="3" width="74" height="20" uuid="bbae59f3-dca1-4933-870b-d819785448d9"/>
+				<textFieldExpression><![CDATA[$F{TANGGAL_REPARASI}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement x="438" y="3" width="100" height="20" uuid="5cfb62c8-29ff-44f5-bc03-fdf70ac73cf1"/>
+				<textFieldExpression><![CDATA[$F{TOTAL_HARGASERVICE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="242" y="3" width="100" height="20" uuid="fb974210-add3-4533-a2ee-21d1c59f1639"/>
+				<textFieldExpression><![CDATA[$F{NAMA_TEKNISI}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="51" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="7" width="555" height="1" uuid="b81eb3ab-fe4b-48e0-9a33-447771ecbee7"/>
+			</line>
+			<textField pattern="#,##0">
+				<reportElement x="414" y="20" width="100" height="20" uuid="9603d6fb-c948-4344-b08b-a52e1d3ed921"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{TOTAL_HARGASERVICE_2}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="274" y="20" width="140" height="20" uuid="d539443a-7f7e-4964-bda5-610f177b6eee"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TOTAL PENDAPATAN :]]></text>
+			</staticText>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
